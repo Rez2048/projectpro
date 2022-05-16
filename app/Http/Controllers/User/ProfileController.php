@@ -30,6 +30,17 @@ class ProfileController extends Controller
         if ($data['type']==='sms')
         {
             //Validate sms
+
+            if($request->user()->phone_number !== $data['phone'])
+            {
+                return redirect(route('profile.phone'));
+            }
+            else
+            {
+                $request->user()->update([
+                    'tow_factor_type'=>'sms'
+                ]);
+            }
         }
         if ($data['type']==='off')
         {
@@ -40,6 +51,22 @@ class ProfileController extends Controller
 
         return back();
 
+
+
+
+    }
+    public function getauthphone()
+    {
+        return view('user.profile.phoneauth');
+    }
+    public function postauthphone(Request  $request)
+    {
+        $request->validate([
+
+            'token'=>'required'
+
+        ]);
+        return $request->token;
 
     }
 }

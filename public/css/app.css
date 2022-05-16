@@ -11292,3 +11292,21 @@ textarea.form-control-lg {
     left: 0rem;
     top: -13px;
 }
+.styleformtowfact
+{
+    margin: 8px 0 8px 0px;
+    padding: 1px 8px;
+}
+.stylebuttowfact
+{
+    margin: 10px 0 10px 10px
+}
+.stylephoneact
+{
+    margin: 8px 0 8px 0px;
+    padding: 1px 8px;
+}
+.styleinput
+{
+    width: 50%!important;
+}

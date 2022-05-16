@@ -6,7 +6,7 @@
   @include('layouts.error')
     <form action="#" method="POST">
         @csrf
-        <div class="form-group">
+        <div class="form-group styleformtowfact">
             <label for="type">Type</label>
             <select name="type" id="type" class="form-control">
                @foreach(config('towfactor.types') as $key=>$name)
@@ -17,14 +17,14 @@
                 @endforeach
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group styleformtowfact">
             <label for="phone">Phone</label>
             <input type="tel" name="phone" id="phone" class="form-control" placeholder="phone_num"
             value=" {{old('phone') ?? auth()->user()->phone_number}}"
             >
         </div>
 
-        <div class="form-group">
+        <div class="form-group stylebuttowfact">
             <button class="btn btn-primary">Update</button>
         </div>
 
