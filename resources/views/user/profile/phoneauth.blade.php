@@ -16,7 +16,7 @@
                                @csrf
                                <div class="form-group stylephoneact">
 
-                                   <label class="col-form-label" for="token">Token</label>
+                                   <label class="col-form-label" for="token">Token : </label>
                                    <input type="text" class="form-control @error('token') is-invalid @enderror
                                    styleinput" name="token" placeholder="Enter Your Active Code">
                                    @error('token')

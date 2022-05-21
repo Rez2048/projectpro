@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/profile',[ProfileController::class , 'index'])->name('profile');
     Route::get('profile/towfactorauth',[ProfileController::class , 'towfactorauth'])->name('towfactorauth');
     Route::Post('profile/towfactorauth',[ProfileController::class , 'posttowfactorauth']);
+
     Route::get('profile/towfactorauth/phone',[ProfileController::class , 'getauthphone'])->name('profile.phone');
     Route::post('profile/towfactorauth/phone',[ProfileController::class , 'postauthphone']);
 

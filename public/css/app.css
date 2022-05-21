@@ -11299,7 +11299,8 @@ textarea.form-control-lg {
 }
 .stylebuttowfact
 {
-    margin: 10px 0 10px 10px
+    margin: 10px 0 10px 10px;
+    display: inline;
 }
 .stylephoneact
 {
@@ -11309,4 +11310,5 @@ textarea.form-control-lg {
 .styleinput
 {
     width: 50%!important;
+    display: inline;
 }
