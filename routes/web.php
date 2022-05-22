@@ -18,12 +18,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Route::get('/rez',function(){
-//    return 'hi';
-//});
 
+Route::get('/test',function (){
+    return auth()->user()->activeCode()->create([
+
+        'code'=>'99922',
+        'expired_at'=>now()->addSeconds(6)
+    ]);
+});
 
 Route::get('/', function () {
+
+
 
     alert()->success('welcome')->persistent('ok');
     return view('welcome');

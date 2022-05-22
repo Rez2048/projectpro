@@ -15,10 +15,10 @@ class ActiveCode extends Model
         'expierd_at'
     ];
 
-//    public $timestamps=false;
+    public $timestamps=false;
 
     public function user()
     {
-        return $this->belongsTo(User::class)
+        return $this->belongsTo(User::class);
     }
 }

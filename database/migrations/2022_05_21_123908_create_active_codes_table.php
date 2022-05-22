@@ -16,10 +16,10 @@ class CreateActiveCodesTable extends Migration
         Schema::create('active_codes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-//            $table->foreign('user_id')->references('id')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('code');
-            $table->unique(['user_id','code']);
-//            $table->timestamps('expierd_at');
+            $table->unique(['user_id' , 'code']);
+            $table->timestamp('expired_at');
         });
     }
 
