@@ -19,13 +19,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/test',function (){
-    return auth()->user()->activeCode()->create([
-
-        'code'=>'99922',
-        'expired_at'=>now()->addSeconds(6)
-    ]);
-});
+//Route::get('/test',function (){
+//    return auth()->user()->activeCode()->create([
+//
+//        'code'=>'99922',
+//        'expired_at'=>now()->addMinutes(6)
+//    ]);
+//});
 
 Route::get('/', function () {
 
@@ -43,10 +43,6 @@ Route::get('/auth/google' ,[GoogleController::class, 'redirect'])->name('auth.go
 Route::get('/auth/google/callback' ,[GoogleController::class, 'callback']);
 //E_Route-auh-google
 
-
-
-
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Rout-End-Auth
@@ -54,6 +50,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Rout-Start-Profile
 Route::middleware('auth')->group(function (){
     Route::get('/profile',[ProfileController::class , 'index'])->name('profile');
+
     Route::get('profile/towfactorauth',[ProfileController::class , 'towfactorauth'])->name('towfactorauth');
     Route::Post('profile/towfactorauth',[ProfileController::class , 'posttowfactorauth']);
 
