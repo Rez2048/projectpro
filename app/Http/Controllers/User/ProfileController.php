@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActiveCode;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -33,6 +34,13 @@ class ProfileController extends Controller
 
             if($request->user()->phone_number !== $data['phone'])
             {
+                //create code
+                $code = ActiveCode::GenerateCode($request->user());
+                return $code;
+
+                //send code
+
+
                 return redirect(route('profile.phone'));
             }
             else
