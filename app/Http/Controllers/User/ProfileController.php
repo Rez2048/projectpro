@@ -36,8 +36,8 @@ class ProfileController extends Controller
             {
                 //create code
                 $code = ActiveCode::GenerateCode($request->user());
-                return $code;
 
+                $request->session()->flash('phone',$data['phone']);
                 //send code
 
 
@@ -63,8 +63,14 @@ class ProfileController extends Controller
 
 
     }
-    public function getauthphone()
+    public function getauthphone(Request $request)
     {
+        if (! request()->session()->has('phone'))
+        {
+            return redirect(route('towfactorauth'));
+        }
+        $request->session()->reflash();
+
         return view('user.profile.phoneauth');
     }
     public function postauthphone(Request  $request)
@@ -74,7 +80,25 @@ class ProfileController extends Controller
             'token'=>'required'
 
         ]);
-        return $request->token;
+        $status=ActiveCode::VerifyCode($request->token ,$request->user());
+
+        if ($status)
+        {
+            $request->user()->activeCode()->delete();
+            $request->user()->update([
+                'phone_number'=>$request->session()->get('phone'),
+                'two_factor_type'=>'sms'
+            ]);
+
+            alert()->success('کد تایید ثبت شد ','عملیات موفق');
+
+        }else{
+            alert()->error('کد تایید اشتباه ','عملیات ناموفق');
+        }
+
+
+//        return 'redirect(route('towfactorauth'))';
+//        return redirect(route('towfactorauth'));
 
     }
 }

@@ -22,6 +22,11 @@ class ActiveCode extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function scopeVerifyCode($query , $code , $user)
+    {
+        return !! $user->activecode()->where($code)->where('expierd_at' ,'>', now());
+    }
+
     public function scopeGenerateCode($query , $user)
     {
         if($code = $this->getAliveCodeForUser($user)) {
