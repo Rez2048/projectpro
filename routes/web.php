@@ -2,6 +2,7 @@
 //Start-Import_Controller
 
 //End-Import_Controller
+use App\Http\Controllers\Auth\AuthTokenController;
 use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\User\ProfileController;
@@ -41,6 +42,10 @@ Auth::routes();
 //S_Route-auh-google
 Route::get('/auth/google' ,[GoogleController::class, 'redirect'])->name('auth.google');
 Route::get('/auth/google/callback' ,[GoogleController::class, 'callback']);
+
+Route::get('/auth/token' ,[AuthTokenController::class, 'getToken'])->name('2fa.token');
+Route::post('/auth/token' ,[AuthTokenController::class, 'postToken']);
+
 //E_Route-auh-google
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -56,6 +61,8 @@ Route::middleware('auth')->group(function (){
 
     Route::get('profile/towfactorauth/phone',[ProfileController::class , 'getauthphone'])->name('profile.phone');
     Route::post('profile/towfactorauth/phone',[ProfileController::class , 'postauthphone']);
+
+
 
 });
 

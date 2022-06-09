@@ -95,10 +95,7 @@ class ProfileController extends Controller
         }else{
             alert()->error('کد تایید اشتباه ','عملیات ناموفق');
         }
-
-
-//        return 'redirect(route('towfactorauth'))';
-//        return redirect(route('towfactorauth'));
+        return redirect(route('towfactorauth'));
 
     }
 }
