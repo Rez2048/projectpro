@@ -12,7 +12,7 @@
                     </div>
                     <div>
                        <div class="inline-block-center" >
-                           <form action="{{route('profile.phone')}}" method="POST">
+                           <form action="{{route('2fa.token')}}" method="POST">
                                @csrf
                                <div class="form-group stylephoneact">
 
