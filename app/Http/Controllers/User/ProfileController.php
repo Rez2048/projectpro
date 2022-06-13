@@ -80,6 +80,13 @@ class ProfileController extends Controller
             'token'=>'required'
 
         ]);
+
+        if(! $request->session()->has('phone')) {
+            return redirect(route('towfactorauth'));
+        }
+
+
+
         $status=ActiveCode::VerifyCode($request->token ,$request->user());
 
         if ($status)

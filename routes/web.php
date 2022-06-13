@@ -32,22 +32,22 @@ Route::get('/', function () {
 
 
 
-    alert()->success('welcome')->persistent('ok');
+    alert()->error('asdsa')->persistent('ok');
     return view('welcome');
 });
-//['verif'=>true]
 //Rout-Start-Auth
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 //S_Route-auh-google
 
 Route::get('/auth/google' ,[GoogleController::class, 'redirect'])->name('auth.google');
 Route::get('/auth/google/callback' ,[GoogleController::class, 'callback']);
+Route::get('/auth/token' ,[AuthTokenController::class, 'getToken'])->name('2fa.token');
+Route::post('/auth/token' ,[AuthTokenController::class, 'postToken'])->name('tokenpost');
 //E_Route-auh-google
 
 //S_Route-auh-Token
-Route::get('/auth/token' ,[AuthTokenController::class, 'getToken'])->name('2fa.token');
-Route::post('/auth/token' ,[AuthTokenController::class, 'postToken']);
+
 //E_Route-auh-Token
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

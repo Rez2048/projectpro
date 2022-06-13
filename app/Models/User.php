@@ -51,7 +51,6 @@ class User extends Authenticatable
 
     public function hasTwoFactorAuthenticatedEnabled()
     {
-
         return $this->two_factor_type !== 'off';
     }
 

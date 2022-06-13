@@ -7,18 +7,19 @@ use App\Models\ActiveCode;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class AuthTokenController extends Controller
+class  AuthTokenController extends Controller
 {
     public function getToken(Request $request)
     {
-        if (! $request->session()->has('auth'))
-        {
-            return redirect('login');
+        if(! $request->session()->has('auth')) {
+            return redirect(route('login'));
         }
-        $request->session()->reflash();
-        return view('auth.token');
 
+        $request->session()->reflash();
+
+        return view('auth.token');
     }
+
     public function postToken(Request $request)
     {
         $request->validate([
@@ -33,13 +34,19 @@ class AuthTokenController extends Controller
 
         $status = ActiveCode::verifyCode($request->token , $user);
 
-        if(! $status) {
-            alert()->error('کد صحیح نبود');
+        if(!$status) {
+            alert()->error('کد صحیح نیست');
             return redirect(route('login'));
         }
 
+
         if(auth()->loginUsingId($user->id,$request->session()->get('auth.remember'))) {
-            $user->activeCode()->delete();
+
+
+           $user->activeCode()->delete();
+
+
+            alert()->success('کد صحیح بود');
             return redirect('/');
         }
 
