@@ -32,7 +32,7 @@ Route::get('/', function () {
 
 
 
-    alert()->error('asdsa')->persistent('ok');
+//    alert()->error('Welcome')->persistent('ok');
     return view('welcome');
 });
 //Rout-Start-Auth

@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('script')
+    <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -50,7 +52,16 @@
                                 </div>
                             </div>
                         </div>
+{{--start-recaptcha--}}
+                        <div class="row mt-2 mb-3">
+                            <div class="col-md-8 offset-md-4 ">
 
+                                <div class="g-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_SITE_KEY')}}"></div>
+
+                            </div>
+
+                        </div>
+{{-- end-recaptcha--}}
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
