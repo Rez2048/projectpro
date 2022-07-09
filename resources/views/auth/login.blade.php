@@ -55,9 +55,7 @@
 {{--start-recaptcha--}}
                         <div class="row mt-2 mb-3">
                             <div class="col-md-8 offset-md-4  ">
-
-                                @recaptcha
-
+                                <div class="g-recaptcha @error('g-recaptcha-response') is-invalid @enderror" data-sitekey="{{ env('GOOGLE_RECAPTCHA_SITE_KEY') }}"></div>
                                 @error('g-recaptcha-response')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

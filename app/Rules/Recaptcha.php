@@ -34,7 +34,7 @@ class Recaptcha implements Rule
 
                 'form_params'=>[
 
-                    'secret'=>env('GOOGLE_RECAPTCHA_SECRET_KEYY'),
+                    'secret'=>env('GOOGLE_RECAPTCHA_SECRET_KEY'),
                     'response'=>$value,
                     'remoteip'=> request()->ip()
                 ]

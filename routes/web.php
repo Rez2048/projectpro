@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
+ * key====== 6Le2DMYgAAAAAB6SqJpI_6QEOLX6syPfhUBlthz2
+ *
+ * sec===    6Le2DMYgAAAAAGKF8P3U3I8daB_x0mC4ry3ej1XZ
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
